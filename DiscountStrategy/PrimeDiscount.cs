@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiscountStrategy
+namespace DiscountStrategy;
+
+// for prime members on commercial app
+public class PrimeDiscount:IDiscountStrategy
 {
-    public class PrimeDiscount:IDiscountStrategy
+    int _discountrate=30;
+    public PrimeDiscount() { }
+
+    public double Apply(double amount)
     {
-        int discount_rate=30;
-        public PrimeDiscount() { }
-
-        public double Apply(double amount)
-        {
-            return discount_rate * amount/100;
-        }
-
+        return _discountrate * amount/100;
     }
+
 }

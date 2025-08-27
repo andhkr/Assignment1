@@ -1,39 +1,37 @@
 ﻿using DiscountStrategy;
 
-namespace Executive
+namespace Executive;
+
+public class Discount
 {
+    IDiscountStrategy _strategy;
 
-    public class Discount
+    public Discount(IDiscountStrategy obj)
     {
-        IDiscountStrategy _strategy;
-
-        public Discount(IDiscountStrategy obj)
-        {
-            _strategy = obj;
-        }
-
-        public double DiscountedPrice(double price)
-        {
-            return Math.Max(0,price - _strategy.Apply(price));
-        }
-
+        _strategy = obj;
     }
 
-    public class Program
+    public double DiscountedPrice(double price)
     {
-        static void Main(string[] args)
-        {
-            //FestivalDiscount
-            Discount Festive = new Discount(new FestivalDiscount());
-            Console.WriteLine($"Festival Discount Price : {Festive.DiscountedPrice(1000)}");
+        return price - _strategy.Apply(price);
+    }
 
-            //PrimeDiscount
-            Discount Prime = new Discount(new PrimeDiscount());
-            Console.WriteLine($"Prime Discount Price : {Prime.DiscountedPrice(1000)}");
+}
 
-            //EventDiscount
-            Discount Event = new Discount(new EventDiscount());
-            Console.WriteLine($"Event Discount Price : {Event.DiscountedPrice(1000)}");
-        }
+public class Program
+{
+    static void Main(string[] args)
+    {
+        //FestivalDiscount
+        Discount festive = new Discount(new FestivalDiscount());
+        Console.WriteLine($"Festival Discount Price : {festive.DiscountedPrice(1000)}");
+
+        //PrimeDiscount
+        Discount prime = new Discount(new PrimeDiscount());
+        Console.WriteLine($"Prime Discount Price : {prime.DiscountedPrice(1000)}");
+
+        //EventDiscount
+        Discount @event = new Discount(new EventDiscount());
+        Console.WriteLine($"Event Discount Price : {@event.DiscountedPrice(1000)}");
     }
 }
