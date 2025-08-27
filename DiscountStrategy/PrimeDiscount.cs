@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 namespace DiscountStrategy;
 
 // for prime members on commercial app
-public class PrimeDiscount:IDiscountStrategy
+public class PrimeDiscount : IDiscountStrategy
 {
-    int _discountrate=30;
+    private readonly int _discountrate = 30;
     public PrimeDiscount() { }
 
     public double Apply(double amount)
     {
-        return _discountrate * amount/100;
+        return _discountrate * amount / 100;
     }
 
 }

@@ -11,7 +11,7 @@ namespace Assignment1Test;
 [TestClass]
 public class FestivalDiscountTest
 {
-    Discount _applydiscount;
+    Discount? _applydiscount = null;
 
     [TestInitialize]
     public void Setup()
@@ -22,18 +22,19 @@ public class FestivalDiscountTest
     [TestMethod]
     public void TestMethod1()
     {
-
         int price = 1000;
-        double dicounted_price = _applydiscount.DiscountedPrice(price);
 
-        Assert.AreEqual(820, dicounted_price);
+        double discounted_price = _applydiscount!.DiscountedPrice(price);
+
+        Assert.AreEqual(820, discounted_price);
     }
 
     [TestMethod]
     public void TestMethod2()
     {
         int price = 90;
-        double dicounted_price = _applydiscount.DiscountedPrice(price);
+
+        double dicounted_price = _applydiscount!.DiscountedPrice(price);
 
         Assert.AreEqual(90, dicounted_price);
     }

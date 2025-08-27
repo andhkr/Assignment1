@@ -10,14 +10,13 @@ using System.Threading.Tasks;
 using DiscountStrategy;
 using Executive;
 
-
 namespace Assignment1Test;
 
 // Testcases for EventDiscount Strategy
 [TestClass]
 public class EventDiscountTest
 {
-    Discount _applydiscount;
+    Discount? _applydiscount = null;
 
     [TestInitialize]
     public void Setup()
@@ -28,18 +27,18 @@ public class EventDiscountTest
     [TestMethod]
     public void TestMethod1()
     {
-
         int price = 1100;
-        double dicounted_price = _applydiscount.DiscountedPrice(price);
 
-        Assert.AreEqual(1000, dicounted_price);
+        double discounted_price = _applydiscount!.DiscountedPrice(price);
+
+        Assert.AreEqual(1000, discounted_price);
     }
 
     [TestMethod]
     public void TestMethod2()
     {
         int price = 90;
-        double dicounted_price = _applydiscount.DiscountedPrice(price);
+        double dicounted_price = _applydiscount!.DiscountedPrice(price);
 
         Assert.AreEqual(81, dicounted_price);
     }

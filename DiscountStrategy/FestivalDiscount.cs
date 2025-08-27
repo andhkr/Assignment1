@@ -5,14 +5,15 @@
 namespace DiscountStrategy;
 
 // Festival based Discount
-public class FestivalDiscount:IDiscountStrategy
+public class FestivalDiscount : IDiscountStrategy
 {
-    int _discountrate = 20;
+    private readonly int _discountrate = 20;
+
     public FestivalDiscount() { }
 
     public double Apply(double amount)
     {
-        return Math.Max(0,_discountrate * amount / 100 - _discountrate);
+        return Math.Max(0, _discountrate * amount / 100 - _discountrate);
     }
 
 }

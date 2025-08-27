@@ -20,7 +20,7 @@ public class Discount
 
 public class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
         //FestivalDiscount
         Discount festive = new Discount(new FestivalDiscount());
