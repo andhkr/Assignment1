@@ -33,4 +33,11 @@ public class PrimeDiscountTest
 
         Assert.AreEqual(770, discounted_price);
     }
+
+    [TestMethod]
+    public void TestMethod2()
+    {
+        Assert.ThrowsException<ArgumentException>(() => _applydiscount!.DiscountedPrice(-100));
+    }
+
 }

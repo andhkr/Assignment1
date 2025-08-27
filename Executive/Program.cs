@@ -13,6 +13,11 @@ public class Discount
 
     public double DiscountedPrice(double price)
     {
+        if (price < 0)
+        {
+            throw new ArgumentException("Price cannot be negative");
+        }
+
         return price - _strategy.Apply(price);
     }
 
